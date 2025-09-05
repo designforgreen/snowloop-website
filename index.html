@@ -704,6 +704,27 @@
             box-shadow: 0 30px 60px rgba(74, 144, 226, 0.4);
         }
 
+        .app-store-button.coming-soon {
+            cursor: pointer;
+            background: linear-gradient(135deg, #6B7280, #9CA3AF);
+            position: relative;
+        }
+
+        .app-store-button.coming-soon::after {
+            content: '🚀';
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+
+        .app-store-button.coming-soon:hover {
+            background: linear-gradient(135deg, #4B5563, #6B7280);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(107, 114, 128, 0.4);
+        }
+
         .footer {
             background: rgba(10, 14, 20, 0.8);
             backdrop-filter: blur(25px);
@@ -1004,7 +1025,10 @@
         <div class="download-container">
             <h2>Start Your Adventure Today</h2>
             <p>Join thousands of skiers who trust Snow Loop to track their mountain adventures.</p>
-            <a href="#" class="app-store-button">Download on App Store</a>
+            <!-- TODO: Replace with actual App Store URL when app is published -->
+            <div class="app-store-button coming-soon" onclick="showComingSoon()">
+                Coming Soon on App Store
+            </div>
         </div>
     </section>
 
@@ -1053,6 +1077,10 @@
                 });
             });
         });
+
+        function showComingSoon() {
+            alert('Snow Loop is coming soon! 🚀\n\nWe\'re putting the finishing touches on our app. Sign up for updates at support@snowloop.app');
+        }
     </script>
 
     <style>
