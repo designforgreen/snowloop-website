@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snow Loop - Support & Help Center</title>
+    <meta name="description" content="Get help with Snow Loop ski tracking app. Find answers to common questions, contact support, and access troubleshooting guides.">
+    <meta name="keywords" content="Snow Loop support, ski tracking app help, GPS troubleshooting, weather updates">
+    <link rel="canonical" href="https://snowloop.app/support">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #4A90E2;
+            --primary-orange: #FF6B35;
+            --dark-bg: #0A0E14;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --accent-gradient: linear-gradient(135deg, #4A90E2, #FF6B35);
+            --shadow-glow: 0 20px 40px rgba(74, 144, 226, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(74, 144, 226, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 107, 53, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(74, 144, 226, 0.2) 0%, transparent 50%),
+                linear-gradient(135deg, #0A0E14 0%, #1A1F2E 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-glow);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 25px 50px rgba(74, 144, 226, 0.4);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: var(--glass-bg);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            color: var(--text-primary);
+            background: var(--glass-bg);
+        }
+
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10rem 2rem 4rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-section p {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-weight: 300;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 6rem;
+        }
+
+        .support-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.05), rgba(255, 107, 53, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .support-card:hover::before {
+            opacity: 1;
+        }
+
+        .support-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 0 1px rgba(74, 144, 226, 0.3);
+        }
+
+        .support-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            box-shadow: var(--shadow-glow);
+            position: relative;
+            z-index: 1;
+        }
+
+        .support-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .support-card p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent-gradient);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-glow);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .contact-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .contact-button:hover::before {
+            left: 100%;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(74, 144, 226, 0.4);
+        }
+
+        .faq-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            margin-bottom: 4rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .faq-section h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--text-primary);
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .faq-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--primary-blue);
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-weight: 300;
+            padding-left: 1rem;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .contact-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+        }
+
+        .contact-section h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-method {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary-blue);
+            transform: translateY(-5px);
+        }
+
+        .footer {
+            background: rgba(10, 14, 20, 0.8);
+            backdrop-filter: blur(25px);
+            color: var(--text-primary);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            border-radius: 30px 30px 0 0;
+            margin-top: 4rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+            background: var(--glass-bg);
+        }
+
+        .footer p {
+            opacity: 0.7;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 8rem 1rem 2rem;
+            }
+
+            .hero-section {
+                margin-bottom: 4rem;
+            }
+
+            .support-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .support-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .faq-section, .contact-section {
+                padding: 2rem 1.5rem;
+                border-radius: 20px;
+            }
+
+            .nav {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 14, 20, 0.95);
+                backdrop-filter: blur(25px);
+                flex-direction: column;
+                padding: 2rem;
+                border-top: 1px solid var(--glass-border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo">
+                <img src="assets/images/appicon-v3.png" alt="Snow Loop Icon">
+                Snow Loop
+            </a>
+            <button class="mobile-menu-toggle">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero-section">
+            <h1>🆘 Support & Help Center</h1>
+            <p>We're here to help you get the most out of Snow Loop. Find answers to common questions or get personalized support from our team.</p>
+        </section>
+
+        <div class="support-grid">
+            <div class="support-card">
+                <div class="support-icon">📧</div>
+                <h3>Email Support</h3>
+                <p>Get personalized help with technical issues, billing questions, or feature requests from our expert team.</p>
+                <a href="mailto:support@snowloop.app" class="contact-button">support@snowloop.app</a>
+            </div>
+            
+            <div class="support-card">
+                <div class="support-icon">📱</div>
+                <h3>In-App Help</h3>
+                <p>Access contextual help and tutorials directly in the Snow Loop app through Settings → Help & Support.</p>
+                <div class="contact-button" style="background: var(--glass-bg); cursor: default;">Available in App</div>
+            </div>
+
+            <div class="support-card">
+                <div class="support-icon">⚡</div>
+                <h3>Quick Response</h3>
+                <p>We typically respond to all support requests within 24-48 hours during business days with detailed solutions.</p>
+                <div class="contact-button" style="background: linear-gradient(135deg, #27ae60, #2ecc71); cursor: default;">Fast Support</div>
+            </div>
+        </div>
+
+        <section id="faq" class="faq-section">
+            <h2>❓ Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">📍 Why isn't my GPS tracking working?</div>
+                <div class="faq-answer">
+                    Make sure Location Services are enabled for Snow Loop in your iPhone Settings → Privacy & Security → Location Services → Snow Loop. Ensure you have good GPS signal and grant "Always" location access for optimal tracking performance on the slopes.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">🌤️ Weather information not updating?</div>
+                <div class="faq-answer">
+                    Weather data requires an active internet connection. Check your WiFi or cellular connection, then try refreshing by pulling down on the weather screen. If problems persist, restart the app or check for updates.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">💾 How is my ski data stored and protected?</div>
+                <div class="faq-answer">
+                    Your ski tracks are stored locally on your device and securely synced to our encrypted cloud servers. You maintain complete control over your data and can view, export, or delete it anytime through app settings.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">🗺️ Can I use Snow Loop offline on the mountain?</div>
+                <div class="faq-answer">
+                    Absolutely! Download maps for your favorite ski resorts before heading out. GPS tracking works completely offline, and your data will sync automatically when you're back online.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">🏔️ Which Canadian ski resorts are supported?</div>
+                <div class="faq-answer">
+                    Snow Loop provides comprehensive coverage of major Canadian ski destinations across British Columbia, Alberta, Ontario, and Quebec. We're continuously adding new resorts based on user requests.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">📱 What are the system requirements?</div>
+                <div class="faq-answer">
+                    Snow Loop requires iOS 15.0 or later and is optimized for iPhone. The app leverages the latest iOS features for superior performance, accuracy, and battery efficiency.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">🔒 How do you protect my privacy?</div>
+                <div class="faq-answer">
+                    Privacy is fundamental to Snow Loop. Your location data is encrypted end-to-end, never shared with advertisers, and you control what information is collected. Review our Privacy Policy for complete details.
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2>📞 Need More Help?</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Can't find what you're looking for? Our support team is ready to assist you!</p>
+            
+            <div class="contact-info">
+                <div class="contact-method">
+                    <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">🔧 Technical Support</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">App issues, GPS problems, sync errors</p>
+                    <a href="mailto:support@snowloop.app?subject=Technical Support" class="contact-button">Get Technical Help</a>
+                </div>
+                
+                <div class="contact-method">
+                    <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">💰 Billing Questions</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Subscription issues, refunds, payments</p>
+                    <a href="mailto:support@snowloop.app?subject=Billing Question" class="contact-button">Contact Billing</a>
+                </div>
+                
+                <div class="contact-method">
+                    <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">💡 Feature Requests</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Suggest improvements and new features</p>
+                    <a href="mailto:support@snowloop.app?subject=Feature Request" class="contact-button">Share Ideas</a>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--glass-bg); border-radius: 20px; border: 1px solid var(--glass-border);">
+                <p style="color: var(--text-secondary); font-style: italic; font-weight: 300;">
+                    <strong style="color: var(--text-primary);">Response Time:</strong> We typically respond within 24-48 hours during business days (Monday-Friday, 9 AM - 5 PM PST). For urgent issues, please mark your email as "URGENT" in the subject line.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="mailto:support@snowloop.app">Contact Us</a>
+        </div>
+        <p>© 2025 Design for Green. All rights reserved.</p>
+        <p>Snow Loop - Track Your Ski Adventures</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileMenuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
